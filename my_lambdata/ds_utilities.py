@@ -10,13 +10,14 @@ class Test_Split_Class:
     url = "https://raw.githubusercontent.com/DrewRust/Kepler_Planet_data/master/SoccerMatches.csv"
     soccer_df = pd.read_csv(url)
 
-    def __init__(self, X, y):
+    def __init__(self, df, X, y):
+        self.df = df
         self.X = X
         self.y = y
 
     def my_train_val_test_split(self):
         train_1, test = train_test_split(
-            soccer_df, test_size=0.15, random_state=42)
+            self.df, test_size=0.15, random_state=42)
         train, val = train_test_split(
             train_1, test_size=0.15, random_state=42)
         return train, val, test
@@ -76,7 +77,7 @@ if __name__ == '__main__':
 
     """ Creating an object of the Test_Split_Class """
     dataframe1 = Test_Split_Class(
-        soccer_df[['proj_score1', 'spi1']], soccer_df['score1'])
+        soccer_df, soccer_df[['proj_score1', 'spi1']], soccer_df['score1'])
 
     """ Creating an object of the Others_Class """
     mls_df = Others_Class(soccer_df, 10)
