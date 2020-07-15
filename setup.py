@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="lambdata2-drewrust", # Replace with your own username
 
-    version="0.0.4",
+    version="0.0.5",
     author="drewrust",
     author_email="drewrust1@gmail.com",
     description="A collection of beginner utilites",

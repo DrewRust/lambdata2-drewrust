@@ -11,6 +11,7 @@ pandas = "*"
 scipy = "*"
 numpy = "*"
 scikit-learn = "*"
+docker = "*"
 
 [requires]
 python_version = "3.7"
