@@ -28,7 +28,15 @@
 
 ### 4 functions:
 
-1.  find_nulls_func(df)
-2.  drop_nulls_cols(df)
-3.  convert_to_dates(dateColumn)
-4.  enlarge(n)
+1.  delete_col(column)
+2.  find_nulls_func(df)
+3.  drop_nulls_cols(df)
+4.  convert_to_dates(dateColumn)
+5.  enlarge(n)
+
+### Added Working Unittest for delet_col(column) and enlarge(n)
+
+* These Unittest Work!
+* They have been tested with different inputs.
+
+### To do:  Add Unit Test for all the other methods.

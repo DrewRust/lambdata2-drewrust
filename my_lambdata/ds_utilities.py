@@ -2,8 +2,14 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 # from sklearn.datasets import load_wine
-from pdb import set_trace as breakpoint
+# from pdb import set_trace as breakpoint
+# from IPython.display import display
 
+def enlarge(n):
+    ''' 
+    This function will multiple the input by 100 
+    '''
+    return n * 100
 
 class Test_Split_Class:
 
@@ -32,10 +38,13 @@ class Test_Split_Class:
 
 
 class Others_Class:
-    def __init__(self, df, n, dateColumn):
+    def __init__(self, df):
         self.df = df
-        self.n = n
-        self.dateColumn = dateColumn
+
+    def delete_col(self, col_to_del):
+        new_df = self.df
+        final_df = new_df.drop(columns=[col_to_del])
+        return final_df
 
     def find_nulls_func(self):
         my_list = []
@@ -49,14 +58,14 @@ class Others_Class:
         final_df = new_df.dropna(axis=0)
         return final_df
 
-    def convert_to_dates(self):
+    def convert_to_dates(self, dateColumn):
         new_df = self.df
-        new_df['date_dtype'] = pd.to_datetime(self.dateColumn)
+        new_df['date_dtype'] = pd.to_datetime(dateColumn)
         return new_df
 
-    def enlarge(self):
+    def enlarge(self, n):
         """ Will multiply the input by 100 """
-        return self.n * 100
+        return n * 100
 
 
 if __name__ == '__main__':
@@ -80,9 +89,11 @@ if __name__ == '__main__':
     # breakpoint()
     # print(df.shape)
 
-    """ Creating an object of the Test_Split_Class """
-    dataframe1 = Test_Split_Class(
-        soccer_df, soccer_df[['proj_score1', 'spi1']], soccer_df['score1'])
-
     """ Creating an object of the Others_Class """
-    mls_df = Others_Class(soccer_df, 10, soccer_df['date'])
+    first_obj = Others_Class(soccer_df)
+    first_instance = first_obj.enlarge(5)
+    second_instance = first_obj.convert_to_dates(soccer_df['date'])
+    third_instance = first_obj.delete_col('league_id')
+    fourth_instance = first_obj.find_nulls_func()
+    fifth_instance = first_obj.drop_nulls_cols()
+
